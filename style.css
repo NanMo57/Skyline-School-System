@@ -1,0 +1,311 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #edeff3;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+input, select {
+    outline: none !important;
+}
+
+input[type="search"]::placeholder {
+    font-size: 14px;
+    color: #bdbdbd;
+}
+
+/* Header */
+#header {
+    width: 200px;
+    background-color: #ffffff;
+    padding: 15px;
+}
+
+#header #logo_sys {
+    padding: 20px 15px 0;
+    width: 150px;
+    height: 160px;
+}
+
+#header ul p {
+    padding-left: 15px;
+    color: #b1b2b3;
+}
+
+#header a {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+#header .active {
+    background-color: #c3ebfa;
+    border-radius: 20px 0 0 20px;
+}
+
+#header .active * {
+    color: black !important;
+}
+
+/* Home Section */
+#home {
+    flex: 1;
+    padding: 20px;
+}
+
+#home #jobTitle {
+    font-size: 13px;
+    color: #555;
+}
+
+#home #profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid;
+}
+
+#home #online {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 28px;
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Pages */
+#pages {
+    height: calc(100% - 85px);
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+}
+#pages form{
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    height: 618px;
+}
+
+/* Search Block */
+#search_block {
+    border: 2px solid #ebeaea;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-right: 8px;
+}
+
+.control i:not(.fa-magnifying-glass) {
+    background-color: #fae27c;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.control i.fa-plus, .control i.fa-trash {
+    padding: 9px 10px !important;
+}
+
+/* Table Styling */
+.tableFixHead {
+    overflow: auto;
+    height: 568px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    min-height: 130px;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    background-color: #c3ebfa;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid #dbd9d9;
+}
+
+table td {
+    min-height: 68.4px;
+}
+
+table img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+table p {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+table p[name="student_email"] {
+    font-size: 12px;
+    color: gray;
+}
+
+table i {
+    color: #a8a7a7;
+    margin: 0 3px;
+}
+td {
+    vertical-align: middle; /* Ensures content inside aligns centrally */
+}
+
+.circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color);
+}
+.student-status{
+    color: var(--color) !important;
+     background: color-mix(in srgb, var(--color), white 80%);
+    border-radius: 20px;
+    padding: 2px 5px;
+    width: 90%;
+}
+
+/* Student Picture */
+#student_picture {
+   
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    position: relative;
+}
+.picture_bg{
+    background: linear-gradient(to bottom, rgba(209, 207, 207, 0.59), rgba(164, 159, 159, 0.68)), url(https://res.cloudinary.com/dz7qsbzlz/image/upload/v1738268783/fjpejzny5bdqszavbbgl.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#student_picture .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background-color: #fae27c;
+    color: black !important;
+}
+
+.remove_pic {
+    font-size: 12px;
+    position: absolute;
+    top: 200px;
+}
+
+/* Form Control */
+.form-control {
+    padding: 0.17rem !important;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg ...");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.form-control:valid {
+    border-color: #ced4da !important;
+    background-image: none !important;
+    color: inherit !important;
+}
+
+.row-highlight {
+    background-color: #f1f0ff;
+}
+
+.invalid-feedback{
+    font-size: 11px;
+}
+.is-error{
+    border: 1px #dc3545 solid;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+/* Filtering */
+#filtering {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#filtering > div:first-of-type {
+    background-color: #c3ebfa;
+    padding: 10px;
+}
+
+#Status, #Grade, #filtering ul li {
+    border-bottom: 1px solid #dbd9d9;
+}
+
+#filtering > div:last-of-type {
+    height: 570px;
+    overflow: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+#filtering input {
+    display: none;
+}
+
+.select_filter {
+    background-color: #f1f0ff;
+    border-radius: 5px;
+    padding: 3px 8px;
+}
+
+.unselect_filter {
+    background-color: #dbd9d9;
+    border-radius: 5px;
+    padding: 3px 8px;
+    opacity: 0.5;
+}

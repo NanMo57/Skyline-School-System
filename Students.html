@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="students_list" class="container position-relative">
+        <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
+            <h4 class="mb-0">All Students List</h4>
+            <div class="d-flex align-items-center control">
+                <div id="search_block" class="text-secondary"><i class="fa-solid fa-magnifying-glass me-2"></i><input type="search" placeholder="Search by Name or ID" name="search" id="search" oninput="searchByNameAndID(this)" class="bg-transparent border-0"/></div>
+                <i class="fa-solid fa-sliders me-1 ms-1"></i>
+                <i class="fa-solid fa-filter me-1 ms-1" onclick="openFilter()"></i>
+                <i class="fa-solid fa-plus me-1 ms-1" onclick="addStudentPage()"></i>
+            </div>
+        </div>
+        <div class="card rounded-3 border-0 bg-transparent tableFixHead">
+            <table class="position-relative">
+                <thead>
+                    <th class=""><input type="checkbox" name="row" class="select_rows" /></th>
+                    <th  name="Name">Student Name <i class="fa-solid fa-arrow-down ms-2 text-dark"></i></th>
+                    <th  name="ID">Student ID <i class="fa-solid fa-arrow-down ms-2 text-dark"></i></th>
+                    <th  name="Class">Class <i class="fa-solid fa-arrow-down ms-2 text-dark"></i></th>
+                    <th  name="Registration Date">DOB <i class="fa-solid fa-arrow-down ms-2 text-dark"></i></th>
+                    <th >Phone Number</th>
+                    <th class="col-2">Address</th>
+                    <th class="col">Status</th>
+                    <th >Action</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <section id="filtering" class="container position-absolute top-0 end-0 p-0 h-100 hide">
+            <div class="d-flex justify-content-between align-items-center p-2">
+                <h4>Filtering</h4>
+                <div class="d-flex justify-content-end align-items-center ">
+                    <i class="fa-solid fa-filter-circle-xmark me-2" onclick="clearFilter()"></i>
+                    <i class="fa-solid fa-xmark" onclick="openFilter()"></i>
+                </div>
+            </div>
+            <div>
+                <form>
+                    <div id="Status" class="ps-3 pe-3 pb-3">
+                        <label class="fw-bolder mb-2 mt-2">Status</label>
+                        <div class="d-flex justify-content-start align-items-start flex-wrap gap-2">
+                            <div>
+                                <input type="checkbox" value="All" id="All_status" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="All_status">All</label>
+                            </div>
+                             <div>
+                                <input type="checkbox" value="regular" id="Regular" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Regular">Regular</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="late" id="Late" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Late">Late</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="graduated" id="Graduated" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Graduated">Graduated</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="withdrawn" id="Withdrawn" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Withdrawn">Withdrawn</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Grade" class="ps-3 pe-3 pb-3">
+                        <label class="fw-bolder mb-2 mt-2">Grade</label>
+                        <div class="d-flex justify-content-start align-items-start flex-wrap gap-2">
+                            <div>
+                                <input type="checkbox" value="All" id="All_grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="All_grade">All</label>
+                            </div>
+                             <div>
+                                <input type="checkbox" value="1" id="First Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="First Grade">First Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="2" id="Second Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Second Grade">Second Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="3" id="Third Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Third Grade">Third Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="4" id="Fourth Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Fourth Grade">Fourth Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="5" id="Fifth Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Fifth Grade">Fifth Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="6" id="Sixth Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Sixth Grade">Sixth Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="7" id="Seventh Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Seventh Grade">Seventh Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="8" id="Eighth Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Eighth Grade">Eighth Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="9" id="Ninth Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Ninth Grade">Ninth Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="10" id="Tenth Grade" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Tenth Grade">Tenth Grade</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="11" id="First Secondary (11th Grade)" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="First Secondary (11th Grade)">First Secondary (11th Grade)</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="12" id="Tawjihi (12th Grade)" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Tawjihi (12th Grade)">Tawjihi (12th Grade)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Section" class="ps-3 pe-3 pb-3">
+                        <label class="fw-bolder mb-2 mt-2">Section</label>
+                        <div class="d-flex justify-content-start align-items-start flex-wrap gap-2">
+                            <div>
+                                <input type="checkbox" value="All" id="All_section" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="All_section">All</label>
+                            </div>
+                             <div>
+                                <input type="checkbox" value="A" id="Section A" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Section A">Section A</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="B" id="Section B" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Section B">Section B</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="C" id="Section C" checked="true" onchange="filtering_fun(this)"/>
+                                <label for="Section C">Section C</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </section>
+    
+</body>
+</html>

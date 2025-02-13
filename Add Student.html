@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" class="container pt-3" novalidate>
+        <div class="row">
+            <section class="col-5">
+                <!-- Student ID -->
+                <div id="ID" class="mb-2 col">
+                    <label class="form-label mb-0 fw-bolder">Student ID</label>
+                    <input type="text" name="ID" class="form-control bg-transparent" readonly/>
+                </div>
+
+                <!-- Student Name -->
+                <div id="Name" class="form-check p-0 mb-2 col ">
+                    <label class="form-label mb-0 fw-bolder">Full Name</label>
+                    <input type="text" name="Name" class="form-control bg-transparent" onchange="validationOnChange(this)" required/>
+                    <div class="invalid-feedback">Please enter a valid full name. It should contain at least three words and only alphabetic characters and (-) Dash.</div>
+                </div>
+
+                <!-- Student Gender -->
+                <div id="Gender" class="form-check p-0 mb-2 mt-1 col">
+                    <div class="d-flex justify-content-start align-items-center gap-5">
+                        <label class="form-label fw-bolder m-0">Gender</label>
+                        <div class="d-flex justify-content-start align-items-start w-100 gap-5">
+                            <div class="Male d-flex justify-content-center align-items-center">
+                                <input type="radio" class='me-1 form-check-input m-0' name="Gender" id="male" value="Male" ${info.Gender == 'Male' ? 'checked' : ''}  required>
+                                <label for="male" class="form-check-label">Male</label>       
+                            </div>
+                            <div class="Female d-flex justify-content-center align-items-center">
+                                <input type="radio" class='me-1 form-check-input m-0' id="female" name="Gender" value="Female" ${info.Gender == 'Female' ? 'checked' : ''}  required> 
+                                <label for="female" class="form-check-label">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">Gender selection is required.</div>
+                </div>
+
+                <!-- Student Nationality -->
+                <div class="mb-2 col" id="Nationality">
+                    <label class="form-label mb-0 fw-bolder">Nationality</label>
+                    <input type="text" name="Nationality" class="form-control bg-transparent" onchange="validationOnChange(this)" required>
+                    <div class="invalid-feedback">Please enter a valid nationality name. Use only letters and dashes (-).</div>
+                </div>
+
+                <!-- Student Nationality ID -->
+                <div class="mb-2 col" id="Nationality_ID">
+                    <label class="form-label mb-0 fw-bolder">Nationality ID</label>
+                    <input type="number" name="Nationality ID" class="form-control bg-transparent" onchange="validationOnChange(this)" required>
+                    <div class="invalid-feedback">Please enter a valid ID. Must be exactly [10] digits long.</div>
+                </div>
+
+                <!-- Student Birth Date -->
+                <div class="mb-1 col" id="Birth_Date">
+                    <label class="form-label mb-0 fw-bolder">Date Of Birth</label>
+                    <input type="date" name="Birth Date" class="form-control bg-transparent" onchange="validationOnChange(this)" required>
+                    <div class="invalid-feedback">Please enter a valid birth date. The student must be older than 5 years.</div>
+                </div>
+
+                <!-- Birth Certificate-->
+                <div id="Birth" class="m-0 mb-2 col">
+                    <div>
+                        <div class="w-100">
+                            <button type="button" name="Birth Certificate" class="btn d-flex align-items-center justify-content-start rounded-5 bg-light" onclick="openFile(this)"><i class="fa-solid fa-upload me-2"></i><p class="mb-0" style="font-size:15px;">Upload Birth Certificate</p></button>
+                            <div id="Birth_Certificate" class="hide d-flex justify-content-start align-items-center"></div>
+                        </div>
+                        <input type="file" accept="application/pdf , image/*" name="Birth Certificate" class="hide" onchange="getFileVal(this)" required/>
+                    </div>
+                    <div class="invalid-feedback">Birth date certificate uploaded is required.</div>
+                </div>
+
+                <!-- Student Address -->
+                <div class="mb-2 col">
+                    <label class="form-label mb-0 fw-bolder">Address</label>
+                    <input type="text" name="Address" class="form-control bg-transparent" onchange="validationOnChange(this)" required>
+                    <div class="invalid-feedback">Please enter a valid Address. Use letters, numbers, and common symbols only.</div>
+                </div>
+
+                <!-- Student Phone Number -->
+                <div class="mb-2 col">
+                    <label class="form-label mb-0 fw-bolder">Phone Number</label>
+                    <input type="tel" name="Phone Number" class="form-control bg-transparent"  required>
+                    <div class="invalid-feedback">Phone number is required.</div>
+                </div>
+
+                <!-- Student Email -->
+                <div class="col mb-2">
+                    <label class="form-label mb-0 fw-bolder">Email</label>
+                    <input type="email" name="Email" class="form-control bg-transparent" readonly>
+                </div>
+            </section>
+            <section class="col-5">
+                <!-- relationship with the student -->
+                <div class="m-0 mb-2 col">
+                    <label class="d-block w-100 fw-bolder">Parent-Student Relationship</label>
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <select name="Relationship" id="Relationship" class="form-control bg-transparent me-2" onchange="beRelationshipRequired(this)" required>
+                            <option value="" selected disabled>Select an Option</option>
+                            <option value="father">Father</option>
+                            <option value="mother">Mother</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="text" name="other_relationship" placeholder="Specify other..." onchange="validationOnChange(this)" class="hide form-control bg-transparent" />
+                    </div>
+                    <div class="invalid-feedback">Parent-Student Relationship is required.</div>
+                </div>
+
+                <!-- Parent Name -->
+                <div id="parent_Name" class="mb-2 col">
+                    <label class="form-label mb-0 fw-bolder">Parent/Guardian Name</label>
+                    <input type="text" name="Parent Name" class="form-control bg-transparent" onchange="validationOnChange(this)" required/>
+                    <div class="invalid-feedback">Please enter a valid Parent/Guardian Name. It should contain at least three words and only alphabetic characters and (-) Dash.</div>
+                </div>
+
+                <!-- parent phone number -->
+                <div class="m-0 mb-2 col">
+                    <label class="form-label mb-0 fw-bolder">Parent/Guardian Phone Number</label>
+                    <div class="d-flex">
+                        <input type="tel" name="Parent Phone NO.1" placeholder="Parent Phone NO.1" class="form-control bg-transparent me-2"  required/>
+                        <input type="tel" name="Parent Phone NO.2" placeholder="Parent Phone NO.2" class="form-control bg-transparent"/>
+                    </div>
+                    <div class="invalid-feedback">Please enter at least one phone number. A second number is optional.</div>
+                </div>
+
+                <!-- Parent Address -->
+                <div class="m-0 mb-2 col">
+                    <label class="form-label mb-0 fw-bolder">Parent/Guardian Address</label>
+                    <input type="text" name="Parent Address" class="form-control bg-transparent" onchange="validationOnChange(this)"/>
+                    <div class="invalid-feedback">Please enter a valid Address. Use letters, numbers, and common symbols only.</div>
+                </div>
+
+                <!-- Current Grade -->
+                <div class="m-0 mb-2 col">
+                    <label class="d-block w-100 fw-bolder">Current Grade</label>
+                    <select name="Current Grade" class="form-control bg-transparent me-2" required>
+                        <option value="" selected disabled>Select an Option</option>
+                        <option value="1" >First Grade</option>
+                        <option value="2" >Second Grade</option>
+                        <option value="3" >Third Grade</option>
+                        <option value="4" >Fourth Grade</option>
+                        <option value="5" >Fifth Grade</option>
+                        <option value="6" >Sixth Grade</option>
+                        <option value="7" >Seventh Grade</option>
+                        <option value="8" >Eighth Grade</option>
+                        <option value="9" >Ninth Grade</option>
+                        <option value="10">Tenth Grade</option>
+                        <option value="11">First Secondary (11th Grade)</option>
+                        <option value="12">Tawjihi (12th Grade)</option>
+                    </select>
+                    <div class="invalid-feedback">Current Grade selection is required.</div>
+                </div>
+
+                <!--  Grade -->
+                <div class="m-0 mb-2 col">
+                    <label class="d-block w-100 fw-bolder">Class Section</label>
+                    <select name="Class Section" class="form-control bg-transparent" required>
+                        <option value="" selected disabled>Select an Option</option>
+                        <option value="A" >Section A</option>
+                        <option value="B" >Section B</option>
+                        <option value="C" >Section C</option>
+                    </select>
+                    <div class="invalid-feedback">Class Section selection is required.</div>
+                </div>
+
+                <!-- Student Status -->
+                <div class="m-0 mb-2 col">
+                    <label class="form-label mb-0 fw-bolder">Student Status</label>
+                    <select name="Student Status" class="form-control bg-transparent" >
+                        <option value="First-time Enrollment" selected >First-time Enrollment</option>
+                        <option value="Repeating a Year">Repeating a Year</option>
+                    </select>
+                </div>
+
+                <!-- previous school Name -->
+                <div class="m-0 mb-2 col">
+                    <label class="d-block w-100 fw-bolder">Previous School Name</label>
+                    <input type="text" name="Previous School" class="form-control bg-transparent" onchange="validationOnChange(this)" required>
+                    <div class="invalid-feedback">Please enter a valid Previous School Name. It should not be empty or contain special characters</div>
+                </div>
+
+                <!-- Health status -->
+                <div class="m-0 mb-2 col">
+                    <label class="d-block w-100 fw-bolder">Health status</label>
+                    <div class="d-flex justify-content-center align-items-center w-100 m-0">
+                        <select name="Health Status" class="form-control bg-transparent me-2" onchange="beMedicalReportRequired(this)" required>
+                            <option value="no health issues" selected>No Health Issues</option>
+                            <option value="asthma" >Asthma</option>
+                            <option value="diabetes" >Diabetes</option>
+                            <option value="heart_disease" >Heart Disease</option>
+                            <option value="anemia" >Anemia</option>
+                            <option value="epilepsy" >Epilepsy</option>
+                            <option value="allergy" >Allergy</option>
+                            <option value="disability">Disability</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="text" name="other_health_issue" placeholder="Specify other..." class="form-control bg-transparent hide" />
+                    </div>
+                </div>
+
+                <!-- Medical report -->
+                <div id="medical" class="m-0 mb-2 col">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <label class="d-block col-3 fw-bolder">Medical report</label>
+                        <div class="w-100">
+                            <button type="button" name="Medical Report" class="btn d-flex align-items-center justify-content-start rounded-5 bg-light" onclick="openFile(this)"><i class="fa-solid fa-upload me-2"></i><p class="mb-0" style="font-size:15px;">Upload Medical report</p></button>
+                            <div id="Medical_Report" class="hide d-flex justify-content-start align-items-center"></div>
+                        </div>
+                        <input type="file" accept="application/pdf , image/*" name="Medical Report" class="hide" onchange="getFileVal(this)"/>
+                    </div>
+                    <div class="invalid-feedback">Medical report uploaded is required.</div>
+                </div>
+            </section>
+            <section class="col-2">
+                <!-- Student Picture -->
+                <div class="d-flex flex-column align-items-center justify-content-center position-relative">
+                    <div id="student_picture" class="rounded-pill position-relative picture_bg">
+                        <button type="button" class="btn position-absolute" name="Picture" onclick="openFile(this)">Upload Picture</button>
+                        <img src='' alt='student_picture' name='Picture' class="hide rounded-pill position-absolute w-100 h-100"/>
+                    </div>
+                    <p class="remove_pic hide btn position-absolute mb-2" name="Picture" onclick="deletePicture(this)">Remove Picture</p>
+                    <input type="file" accept="image/*" name="Picture" class="hide" onchange="getFileVal(this)"/>
+                </div>
+
+                <!-- Status In System -->
+                <div class="m-0 mb-2 col mt-5">
+                    <label class="d-block w-100 fw-bolder">Status In System</label>
+                    <div class="d-flex flex-column justify-content-center align-items-start w-100 m-0">
+                        <select name="Status In System" class="form-control bg-transparent me-2 mb-2" onchange="beReasonRequired(this)">
+                            <option value="regular"  selected>Regular</option>
+                            <option value="late">Late</option>
+                            <option value="graduated">Graduated</option>
+                            <option value="withdrawn">Withdrawn</option>
+                        </select>
+                        <div name="reason" class="hide">
+                            <label class="d-block w-100 fw-bolder">Reason</label>
+                            <input type="text" name="reason" placeholder="Specify other..." onchange="validationOnChange(this)" class="form-control bg-transparent"/>
+                            <div class="invalid-feedback">Please enter a valid reason. Use only letters.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registartion Date -->
+                <div class="m-0 mb-2 col">
+                    <label class="d-block w-100 fw-bolder">Registartion Date</label>
+                    <input type="text" name="Registration Date" class="form-control bg-transparent" />
+                </div>
+
+                <!-- control -->
+                <div class="mt-3 w-100 d-flex flex-column align-items-center gap-2">
+                    <button type="button" name="submit" id="submit" class="btn text-center p-2 bg-secondary d-block w-100" onclick="saveStudent()">Save</button>
+                    <button type="button" name="delete" id="delete" class="btn text-center p-2 bg-secondary d-block w-100" onclick="deleteStudent()">Delete</button>
+                    <button type="button" name="cancel" id="cancel" class="btn text-center p-2 bg-secondary d-block w-100" onclick="cancelStudent()">Cancel</button>
+                </div>
+            </section>
+        </div>
+    </form>
+</body>
+</html>
